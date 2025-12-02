@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+<script>
+    const one = (input) => {
+
+        let start = parseInt(document.getElementById("input1").value);
+        let end   = parseInt(document.getElementById("input2").value);
+        let data = "";
+
+        switch(input)
+        {
+            case "print":
+                for(let i = start; i <= end; i++){
+                    data += `<p>${i}</p>`;
+                }
+                break;
+
+            case "rev":
+                for(let i = end; i >= start; i--){
+                    data += `<p>${i}</p>`;
+                }
+                break;
+
+            case "odd":
+                for(let i = start; i <= end; i++){
+                    if(i % 2 != 0){
+                        data += `<p>${i}</p>`;
+                    }
+                }
+                break;
+
+            case "even":
+                for(let i = start; i <= end; i++){
+                    if(i % 2 == 0){
+                        data += `<p>${i}</p>`;
+                    }
+                }
+                break;
+        }
+
+        document.getElementById("container").innerHTML = data;
+    }
+</script>
+
+</head>
+<body>
+
+<p>Start Number : <input type="text" id="input1"/></p>
+<p>End Number : <input type="text" id="input2"/></p>
+
+<button onclick="one('print')"> Print List </button>
+<button onclick="one('rev')"> Reverse the List</button>
+<button onclick="one('odd')"> Print Odd </button>
+<button onclick="one('even')"> Print Even </button>
+
+<section id="container"></section>
+
+</body>
+</html>
