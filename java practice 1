@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Printer</title>
+
+<style>
+    body{
+       
+        background: #8f4141;
+        padding: 30px;
+    }
+
+    p{
+        font-size: 19px;
+    }
+
+    input{
+        padding: 9px;
+        font-size: 17px;
+        border: 1px solid #5ab59a;
+        border-radius: 10px;
+        width: 100px;
+    }
+
+    button{
+        padding: 10px ;
+        margin: 5px;
+        font-size: 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    button:hover{
+        background-color: #0056b3;
+    }
+
+    #container{
+        margin-top: 20px;
+        background: white;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid #87a44c;
+        min-height: 50px;
+    }
+
+    #container p{
+        display: inline-block;
+        padding: 5px 8px;
+        margin: 4px;
+        background: #eeeeee;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    const one = (input) => {
+
+        let start = parseInt(document.getElementById("input1").value);
+        let end   = parseInt(document.getElementById("input2").value);
+        let data = "";
+
+        switch(input)
+        {
+            case "print":
+                for(let i = start; i <= end; i++){
+                    data += `<p>${i}</p>`;
+                }
+                break;
+
+            case "rev":
+                for(let i = end; i >= start; i--){
+                    data += `<p>${i}</p>`;
+                }
+                break;
+
+            case "odd":
+                for(let i = start; i <= end; i++){
+                    if(i % 2 != 0){
+                        data += `<p>${i}</p>`;
+                    }
+                }
+                break;
+
+            case "even":
+                for(let i = start; i <= end; i++){
+                    if(i % 2 == 0){
+                        data += `<p>${i}</p>`;
+                    }
+                }
+                break;
+        }
+
+        document.getElementById("container").innerHTML = data;
+    }
+</script>
+
+</head>
+<body>
+
+<p>Start Number : <input type="text" id="input1"/></p>
+<p>End Number : <input type="text" id="input2"/></p>
+
+<button onclick="one('print')"> Print List </button>
+<button onclick="one('rev')"> Reverse the List</button>
+<button onclick="one('odd')"> Print Odd </button>
+<button onclick="one('even')"> Print Even </button>
+
+<section id="container"></section>
+
+</body>
+</html>
